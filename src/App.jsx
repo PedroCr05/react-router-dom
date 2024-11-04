@@ -1,5 +1,6 @@
 // src/App.jsx
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import NavBar from "./components/NavBar";
 
@@ -17,7 +18,9 @@ const App = () => {
     <>
       <NavBar />
       <h1>Pokemon!</h1>
-      <PokemonList pokemon={pokemon} />
+      <Routes>
+        <Route path="/pokemon" element={<PokemonList pokemon={pokemon} />} />
+      </Routes>
     </>
   );
 };
