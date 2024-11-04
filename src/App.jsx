@@ -19,8 +19,12 @@ const App = () => {
       <NavBar />
       <h1>Pokemon!</h1>
       <Routes>
-        <Route path="/*" element={<h2>Pokepedia</h2>} />
+        <Route path="/" element={<h2>Pokepedia</h2>} />
         <Route path="/pokemon" element={<PokemonList pokemon={pokemon} />} />
+        <Route
+          path="/*"
+          element={<h2>404 Error | Please, return to the main page.</h2>}
+        />
       </Routes>
     </>
   );
