@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import PokemonDetails from "./components/PokemonDetails";
 import NavBar from "./components/NavBar";
+import PokemonForm from "./components/PokemonForm";
 
 const initialState = [
   { _id: 1, name: "bulbasaur", weight: 69, height: 7 },
@@ -15,6 +16,12 @@ const initialState = [
 
 const App = () => {
   const [pokemon, setPokemon] = useState(initialState);
+
+  const addPkmn = (newPokemonData) => {
+    newPokemonData._id = pokemon.length + 1;
+    setPokemon([...pokemon, newPokemonData]);
+  };
+
   return (
     <>
       <NavBar />
@@ -25,6 +32,10 @@ const App = () => {
         <Route
           path="/pokemon/:pokemonId"
           element={<PokemonDetails pokemon={pokemon} />}
+        />
+        <Route
+          path="/pokemon/new"
+          element={<PokemonForm addPkmn={addPkmn} />}
         />
         <Route
           path="/*"
