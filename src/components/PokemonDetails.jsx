@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 
 const PokemonDetails = (props) => {
-  console.log(props);
-
   //   const params = useParams();
   //   console.log("pokemonId:", params);
 
@@ -11,17 +9,24 @@ const PokemonDetails = (props) => {
   // No destructuring will just use a regular variable
   // Either or will work! :D
 
-  //   const { pokemonId } = useParams();
+  const { pokemonId } = useParams();
   //   console.log(`pokemonId:`, pokemonId);
+
+  const singularPkmn = props.pokemon.find(
+    (poke) => poke._id === Number(pokemonId)
+  );
+
+  // Using a console log here to check if our data is coming through is great.
+  // console.log("Pokemon Object:", singularPkmn);
 
   return (
     <>
-      <h2>Pokemon Details</h2>
+      <h2>{singularPkmn.name}</h2>
       <dl>
         <dt>Weight:</dt>
-        <dd></dd>
+        <dd>{singularPkmn.weight}</dd>
         <dt>Height:</dt>
-        <dd></dd>
+        <dd>{singularPkmn.height}</dd>
       </dl>
     </>
   );
